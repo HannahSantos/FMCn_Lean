@@ -61,9 +61,6 @@ by sorry
 theorem Z-DistL : (??) :=
 by sorry
 
-
-by sorry
-
 -- nomeie
 theorem name1 : ∀(a b c : Z), a + b = c ↔ a = c - b :=
 by sorry
