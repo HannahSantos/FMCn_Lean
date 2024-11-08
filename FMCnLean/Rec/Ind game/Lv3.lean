@@ -1,4 +1,4 @@
--- A Lv based on ListNat game, maid by Isaac:
+-- A Lv based on ListNat game, made by Isaac:
 -- https://github.com/isaacmsl/ListNatGame/blob/main/ListNatGame.lean
 ---------------------------------------------------------------------
 
