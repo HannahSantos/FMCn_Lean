@@ -45,7 +45,7 @@ variable {Z : Type u} [Integer Z]
 
 -------------------_Theorems_------------------
 
-theorem ZA_IDL : ∀(a : Z), O + a = a :=
+theorem ZA_IdL : ∀(a : Z), O + a = a :=
 by
   intro a
   rw [ZA_Com zero a]
@@ -61,16 +61,7 @@ by sorry
 theorem Z-DistL : (??) :=
 by sorry
 
-theorem ZA_InvL : (??) :=
-by sorry
 
-theorem ZA_InvL : (??) :=
-by sorry
-
-theorem ZA_InvL : (??) :=
-by sorry
-
-theorem ZA_InvL : (??) :=
 by sorry
 
 -- nomeie
@@ -92,10 +83,8 @@ by sorry
 theorem ZA-CanL : (??) :=
 by sorry
 
-theorem ZA_InvL : (??) :=
-by sorry
 
--- ?desafio?? --
+-- ?desafio? --
 -- Unicidade da (+)-identidade
 
 -- (...)
