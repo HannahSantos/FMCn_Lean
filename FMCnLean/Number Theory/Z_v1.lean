@@ -1,3 +1,7 @@
+-- Baseado no fmcbook (in progress) : https://www.tsouanas.org/fmcbook/
+-- Escrito por Thanos Tsouanas      : https://www.tsouanas.org/
+-------------------------------------------------------------------------------------
+
 namespace intsV1
 
 --universe u
@@ -40,7 +44,8 @@ notation "l"       => one
 variable {Z : Type u} [Integer Z]
 
 -------------------_Theorems_------------------
-theorem ZA_IDL : ∀(a : Z), zero + a = a :=
+
+theorem ZA_IDL : ∀(a : Z), O + a = a :=
 by
   intro a
   rw [ZA_Com zero a]
@@ -68,8 +73,31 @@ by sorry
 theorem ZA_InvL : (??) :=
 by sorry
 
+-- nomeie
+theorem name1 : ∀(a b c : Z), a + b = c ↔ a = c - b :=
+by sorry
+
+-- nomeie
+theorem name2 : ∀(a b c : Z), a + b = c ↔ b = c - a :=
+by sorry
+
+-- nomeie
+theorem name3 : ∀(a b : Z), a = b ↔ a - b = O :=
+by sorry
 
 
+theorem ZA-CanR : (??) :=
+by sorry
 
+theorem ZA-CanL : (??) :=
+by sorry
+
+theorem ZA_InvL : (??) :=
+by sorry
+
+-- ?desafio?? --
+-- Unicidade da (+)-identidade
+
+-- (...)
 
 end intsV1
