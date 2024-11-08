@@ -1,11 +1,13 @@
 -- A Lv based on ListNat game, maid by Isaac:
 -- https://github.com/isaacmsl/ListNatGame/blob/main/ListNatGame.lean
+---------------------------------------------------------------------
+
 inductive ListNat where
   | nil
   | cons : Nat → ListNat → ListNat
   deriving Repr
 
--- LEVEL 1: Recognizing
+-- Pt 1: Recognizing
 
 
 open ListNat -- Easier to write ListNat things
@@ -22,7 +24,7 @@ open ListNat -- Easier to write ListNat things
 
 
 
--- LEVEL 2: Defining operations
+-- Pt 2: Defining operations
 
 def length : ListNat → Nat
   | nil => 0
@@ -110,7 +112,7 @@ def reverse : ListNat → ListNat
 
 -- Obviously eval it...
 
--- LEVEL 3: Theorems
+-- Pt 3: Theorems
 
 variable (l : ListNat)
 
@@ -138,7 +140,7 @@ by
 
 
 
--- LEVEL 4: Your own theorems
+-- Pt 4: Your own theorems
 
 -- Sugestions:
 -- Can you think cool theorems about lower_bound and upper_bound?
