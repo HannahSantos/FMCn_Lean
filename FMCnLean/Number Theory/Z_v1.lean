@@ -51,7 +51,7 @@ by
   rw [ZA_Com zero a]
   rw [ZA_IdR a]
 
-
+-- Digite "\fo + <keyb tab> para ∀"
 theorem ZA_InvL : (??) :=
 by sorry
 
