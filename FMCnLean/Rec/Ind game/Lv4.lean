@@ -1,5 +1,7 @@
 namespace Lv4
 
+/- Relações em listas polimórficas -/
+
 inductive List (α : Type) where
   | Nil
   | Cons : α → List α → List α
@@ -17,8 +19,6 @@ section
   #check 3 :: 2 :: 1 :: Nil
 end
 
-/- Relações em listas polimórficas -/
-
 -- Algumas funções
 def length : List α → Nat
   | Nil     => 0
@@ -30,80 +30,117 @@ def concat : List α → List α → List α
 
   infixr:50 " ++ " => concat
 
--- 
+-- Não tenha medo de definir outras
+-- (ou reaproveitar do Lv3)
+
+-- Algumas relações
 def Prefix (l₁ l₂ : List α) : Prop :=
-  -- Uma dica: as funções definidas antes
   sorry
 
-Sublist
+def Suffix (l₁ l₂ : List α) : Prop :=
+  sorry
 
-Segment
+def Segment (l₁ l₂ : List α) : Prop :=
+  sorry
 
-Suffix
+def Sublist (l₁ l₂ : List α) : Prop :=
+  sorry
 
-Relação de ordem estrita Lexicográfica
-
-
+def LexiLe (l₁ l₂ : List α) : Prop :=
+  /- Relação de ordem estrita Lexicográfica -/
+  sorry
 
 -- Alguns teoremas sobre nossas relações
--- AVISO: Talvez nem tudo seja demonstravel ;)
+-- [AVISO] Talvez nem tudo seja demonstravel ;)
 variable (l r s : List α)
+variable (xs ys zs : List α)
+variable (x y z : α)
 
-section -- Prefix
-  theorem Prefix_refl : /- sorry -/ := by
+namespace Prefix
+
+  theorem refl : Prefix l l := by
     sorry
 
-  theorem Prefix_trans : /- sorry -/ := by
+  theorem trans : Prefix l r ∧ Prefix r s → Prefix l s := by
     sorry
 
-  theorem Prefix_antisymm : /- sorry -/ := by
+  theorem antisymm : Prefix l r ∧ Prefix r l → l = r := by
     sorry
-end
 
-agora merecemos usar <=, mesmo que MUITO abuso
--- SERA QUE USAMOS PRA ESSA OU DEIXAMOS PRA OUTRA
--- OU NEM USAMOS?
-infixr:50 " <= " => Prefix
+  -- Agora merecemos usar ≤, mesmo que MUITO abuso
+  infixr:50 " ≤ " => Prefix
 
--- PREFIX
+  theorem cons_preserva_prefix : xs ≤ ys ↔ (x :: xs) ≤ (x :: ys) := by
+    sorry
 
-name?
-∀x xs ys, xs <= ys ↔ (x::xs) <= (x::ys)
+  theorem cons_nao_preserva_prefix : x ≠ y → ¬((x :: xs) ≤ (y :: ys)) := by
+    sorry
 
-name?
-∀l1​ l2​ l3​, l1 <=​ l2 ​→ l1 <=​ (l2 ​++ l3​)
+  theorem /- Um nome bom -/ : l ≤ r → l ≤ (r ++ s) := by
+    sorry
 
-name?
-∀l1​ l2​ l3​, (l1 ​++ l2​) <= l3 → l1 <=​ l3
+  theorem /- Um nome bom -/ : (l ++ r) ≤ s → l ≤ s := by
+    sorry
 
-name? (necessario?)
-∀x1​ x2​ xs ys, x1​ ≠ x2​ → ¬ ((x1​::xs) <= (x2​::ys))
+end Prefix
 
--- SUBLIST
+-- Como acessar teoremas sobre a Prefix:
+#check Prefix.refl
+#check Prefix.cons_nao_preserva_prefix
 
-refl
-trans
-∀l1​ l2​ l3​, sublist l1​ l2      → sublist l1​ (l2 ​++ l3​)
-∀l1​ l2​ x,  sublist l1​ (x::l2​) ↔ l1​ = (l2 ​∨ (sublist l1​ l2))
+namespace Suffix
 
--- Segment
+  theorem refl : Suffix l l := by
+    sorry
 
-refl
-trans
-∀l1​ l2​, segment l1​ l2​ ↔ ∃(l3​), Prefix l1​ l3 ​∧ Sufix l3​ l2
+  theorem trans : Suffix l l := by
+    sorry
 
+  theorem /- Um nome bom -/ : Suffix l r → Suffix l (s ++ r) := by
+    sorry
 
--- Sufix
+end Suffix
 
-refl e trans dnv ;-;
+namespace Segment
 
-∀l1​ l2​ l3​, Suffix l1​ l2 ​→ Suffix l1​ (l3 ​++ l2​)
-∀l1​ l2​,    Suffix l1​ l2​ ↔ ∃(l3)​, l2 ​= (l3 ​++ l1)
+  theorem refl : Segment l l := by
+    sorry
 
--- Rel Lexicografica
+  theorem trans : Segment l l := by
+    sorry
 
-Irrefl
-Trans
-∀l1​ l2​ l3​, LexiLessThan l1​ l2 → LexiLessThan (l1 ​++ l3​) (l2 ​++ l3​)
+  theorem preffix_suffix : Segment l r ↔ ∃ s, (Prefix l s) ∧ (Suffix s r) := by
+    sorry
+
+end Segment
+
+namespace Sublist
+
+  theorem refl : Sublist l l := by
+    sorry
+
+  theorem trans : Sublist l r ∧ Sublist r s → Sublist l s := by
+    sorry
+
+  theorem /- Um nome bom -/ : Sublist l r → sublist l (r ++ s) := by
+    sorry
+
+  theorem /- Um nome bom -/ : Sublist xs (y :: ys) ↔ (xs = ys) ∨ (Sublist xs ys) := by
+    sorry
+
+end Sublist
+
+namespace LexiLe
+
+  theorem irrefl : ¬(LexiLe l l) := by
+    sorry
+
+  theorem trans : LexiLe l r ∧ LexiLe r s → LexiLe l s := by
+    sorry
+
+  theorem concat_preserva : LexiLe l r → LexiLe (l ++ s) (r ++ s) := by
+    sorry
+
+end LexiLe
 
 end Lv4
