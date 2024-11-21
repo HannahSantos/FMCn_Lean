@@ -31,7 +31,7 @@ infixr:50 " ++ " => concat
 def SameSize (l₁ l₂ : List α) : Prop :=
   length l₁ = length l₂
 
--- Algumas relações (de ordem?)
+-- Algumas relações
 variable (l r s : List α)
 
 theorem SameSize_refl : SameSize l l := by
@@ -51,7 +51,7 @@ def Prefix (l₁ l₂ : List α) : Prop :=
 theorem Prefix_refl : /- sorry -/ := by
   sorry
 
-theorem Prefix_symm : /- sorry -/ := by
+theorem Prefix_antisymm : /- sorry -/ := by
   sorry
 
 theorem Prefix_trans : /- sorry -/ := by
