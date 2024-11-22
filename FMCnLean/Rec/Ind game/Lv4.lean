@@ -67,19 +67,20 @@ namespace Prefix
   theorem antisymm : Prefix l r ∧ Prefix r l → l = r := by
     sorry
 
-  -- Agora merecemos usar ≤, mesmo que MUITO abuso
-  infixr:50 " ≤ " => Prefix
+-- Ja te lembro que podes definir uma notacao infixa e ajustar
+-- nos teoremas abaixo, desse modoe, por ex:
+  infixr:50 " << " => Prefix
 
-  theorem cons_preserva_prefix : xs ≤ ys ↔ (x :: xs) ≤ (x :: ys) := by
+  theorem cons_preserva_prefix : xs << ys ↔ (x :: xs) << (x :: ys) := by
     sorry
 
-  theorem cons_nao_preserva_prefix : x ≠ y → ¬((x :: xs) ≤ (y :: ys)) := by
+  theorem cons_nao_preserva_prefix : x ≠ y → ¬(Prefix (x :: xs) (y :: ys)) := by
     sorry
 
-  theorem /- Um nome bom -/ : l ≤ r → l ≤ (r ++ s) := by
+  theorem /- Um nome bom -/ : Prefix l r → Prefix l (r ++ s) := by
     sorry
 
-  theorem /- Um nome bom -/ : (l ++ r) ≤ s → l ≤ s := by
+  theorem /- Um nome bom -/ : Prefix (l ++ r) s → Prefix l s := by
     sorry
 
 end Prefix
