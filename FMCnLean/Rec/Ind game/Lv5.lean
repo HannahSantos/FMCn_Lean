@@ -8,6 +8,9 @@ inductive Tree (α : Type) : Type
   | Node : α → Tree α → Tree α → Tree α
   deriving Repr, DecidableEq
 
+-- Considere que Nils não contam como filhos
+-- E que um Node pai de dois Nils seja uma folha.
+
 open Tree
 
 -- quantos 'andares' tem a árvore
@@ -38,18 +41,28 @@ def isFull : Tree α → Bool
 def isHeapMax [Ord α] : Tree α → Bool
   | tree  => sorry
 
+-- A dual da HeapMax
 def isHeapMin [Ord α] : Tree α → Bool
   | tree  => sorry
+
+--  todo nó é menor que seu filho direito 
+--          e maior que seu filho esquerdo
+def isSearchTree : Tree α → Bool
+  | tree => sorry
 
 -- No nosso caso, uma folha
 -- será um nó sem filhos
 def countLeaves : Tree α → Nat 
   | tree => sorry
 
-def contains [Eq α] : α → Tree α → Bool
+def contains [DecidableEq α] : α → Tree α → Bool
   | tree => sorry
 
--- Tambbém dê o tipo das funções abaixo
+def without : Tree α → α → Tree α 
+  | tree => sorry
+
+-- Type'ie e defina as funções abaixo
+-- Vc consegue XD!
 /-  def mapTree    :   -/
 /-    | tree => sorry  -/
 /--/
@@ -65,23 +78,23 @@ def contains [Eq α] : α → Tree α → Bool
 section -- Funktor!!
 
   class Funktor (f : Type u → Type v) : Type (max (u+1) v) where
-    map : {α β : Type u} → (α → β) → f α → f β
-    id_map : ∀ (x : f α), map id x = id x
-    comp_map : ∀ (g : α → β) (h : β → γ) (x : f α), map (h ∘ g) x = (map h ∘ map g) x
+    fmap : {α β : Type u} → (α → β) → f α → f β
 
-  def map : (α → β) → Tree α → Tree β
-    | tree => sorry
+    id_law : ∀ (x : f α), fmap id x = id x
 
-  def id_map : ∀ (x : Tree α), map id x = id x := by
+    comp_law : ∀ (g : α → β) (h : β → γ) (x : f α), fmap (h ∘ g) x 
+      = (fmap h ∘ fmap g) x
+
+  def id_mapTree : ∀ (x : Tree α), fmap id x = id x := by
     sorry
 
-  def comp_map : ∀ (f : α → β) (g : β → γ) (x : Tree α), map (g ∘ f) x = (map g ∘ map f) x := by
+  def comp_mapTree : ∀ (f : α → β) (g : β → γ) (x : Tree α), fmap (g ∘ f) x = (fmap g ∘ fmap f) x := by
     sorry
 
   instance : Funktor Tree where
-    map := map
-    id_map := id_map
-    comp_map := comp_map
+    fmap     := sorry
+    id_law   := sorry 
+    comp_law := sorry 
 
 end section
 
