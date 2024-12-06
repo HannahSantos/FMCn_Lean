@@ -55,10 +55,13 @@ def isSearchTree : Tree α → Bool
 def countLeaves : Tree α → Nat 
   | tree => sorry
 
+-- testa se um elemento está na árvore
 def contains [DecidableEq α] : α → Tree α → Bool
   | tree => sorry
 
-def without : Tree α → α → Tree α 
+-- Retorna uma árvore sem todas as ocorrências
+-- de seu argumento
+def without [DecidableEq α] : Tree α → α → Tree α 
   | tree => sorry
 
 -- Type'ie e defina as funções abaixo
