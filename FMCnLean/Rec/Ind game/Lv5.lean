@@ -38,6 +38,9 @@ def isFull : Tree α → Bool
 def isHeapMax [Ord α] : Tree α → Bool
   | tree  => sorry
 
+def isHeapMin [Ord α] : Tree α → Bool
+  | tree  => sorry
+
 -- No nosso caso, uma folha
 -- será um nó sem filhos
 def countLeaves : Tree α → Nat 
@@ -92,3 +95,5 @@ end section
 -- size = lenght (flatten)
 -- fmap . flatten = flatten . fmap
 -- fold f e . flatten = fold f e
+
+
