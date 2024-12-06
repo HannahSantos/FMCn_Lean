@@ -86,7 +86,8 @@ end section
 -- [Depois de refutar, tenta acrescentar uma hipótese legal
 --   que torne demonstrável, caso precise :P ]
 
--- demons:
+-- Enuncie e demonstre:
+
 -- rev da rev
 -- size = lenght (flatten)
 -- fmap . flatten = flatten . fmap
